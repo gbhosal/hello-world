@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-presync-hook-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: presync-echo
+          image: alpine:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "=== ArgoCD PreSync Hook Started ==="
+              echo "Timestamp: $(date)"
+              echo "Job Name: $HOSTNAME"
+              echo "Performing pre-sync validation..."
+              sleep 5
+              echo "Pre-sync validation completed successfully!"
+              echo "=== ArgoCD PreSync Hook Finished ==="
+      restartPolicy: Never
+  backoffLimit: 2
