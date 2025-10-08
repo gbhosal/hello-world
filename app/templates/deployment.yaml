@@ -17,5 +17,12 @@ spec:
       containers:
       - name: {{ .Values.serviceName }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        env:
+        - name: ENVIRONMENT
+          value: "development"
+        - name: APP_VERSION
+          value: "{{ .Values.image.tag }}"
+        - name: DEBUG_MODE
+          value: "true"
         ports:
         - containerPort: {{ .Values.service.targetport }}
