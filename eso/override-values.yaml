@@ -14,20 +14,4 @@ serviceMonitor:
   metricRelabelings:
     - action: keep
       sourceLabels: [__name__]
-      regex: >-
-        externalsecret_status_condition|
-        secretstore_status_condition|
-        clustersecretstore_status_condition|
-        externalsecret_sync_calls_total|
-        externalsecret_sync_calls_error|
-        externalsecret_provider_api_calls_count|
-        controller_runtime_reconcile_errors_total|
-        controller_runtime_reconcile_time_seconds_bucket|
-        controller_runtime_reconcile_time_seconds_sum|
-        controller_runtime_reconcile_time_seconds_count|
-        workqueue_retries_total|
-        rest_client_requests_total|
-        certwatcher_read_certificate_errors_total|
-        process_resident_memory_bytes|
-        process_cpu_seconds_total|
-        controller_runtime_webhook_panics_total
+      regex: '^(externalsecret_status_condition|secretstore_status_condition|clustersecretstore_status_condition|externalsecret_sync_calls_total|externalsecret_sync_calls_error|externalsecret_provider_api_calls_count|controller_runtime_reconcile_errors_total|controller_runtime_reconcile_time_seconds_bucket|controller_runtime_reconcile_time_seconds_sum|controller_runtime_reconcile_time_seconds_count|workqueue_retries_total|rest_client_requests_total|certwatcher_read_certificate_errors_total|process_resident_memory_bytes|process_cpu_seconds_total|controller_runtime_webhook_panics_total)$'
