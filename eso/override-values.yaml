@@ -7,5 +7,7 @@ commonLabels:
 # than one instance of external-secrets operates at a time.
 leaderElect: false
 
-serviceMonitor:  
+serviceMonitor:
   enabled: true
+  additionalLabels:
+    release: prometheus-operator
